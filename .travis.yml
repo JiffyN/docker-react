@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t nfuser/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true nfuser/docker-react npm run test
